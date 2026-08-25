@@ -11,9 +11,11 @@ const engine = await build({
 });
 
 const font = readFileSync("assets/unifont-subset.woff2").toString("base64");
+const favicon = readFileSync("assets/favicon.png").toString("base64");
 const html = readFileSync("template.html", "utf8")
   .replace("__ENGINE__", () => engine.outputFiles[0].text)
-  .replace("__UNIFONT__", () => `data:font/woff2;base64,${font}`);
+  .replace("__UNIFONT__", () => `data:font/woff2;base64,${font}`)
+  .replace("__FAVICON__", () => `data:image/png;base64,${favicon}`);
 
 mkdirSync("dist", { recursive: true });
 writeFileSync("dist/index.html", html);
