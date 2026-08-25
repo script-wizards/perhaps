@@ -1,0 +1,14 @@
+{
+  "name": "@scriptwizards/perhaps-engine",
+  "version": "0.1.0",
+  "description": "Clean-room random table engine: a documented subset of Perchance syntax, seedable, zero dependencies",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  }
+}
