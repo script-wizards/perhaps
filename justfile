@@ -17,6 +17,12 @@ web:
     @echo "http://localhost:8746"
     python3 -m http.server 8746 -d packages/web/dist
 
+# deploy the web demo to Cloudflare Pages (perhaps.sh)
+deploy:
+    pnpm --filter @scriptwizards/perhaps-engine build
+    pnpm --filter @scriptwizards/perhaps-web build
+    npx -y wrangler@latest pages deploy packages/web/dist --project-name perhaps --branch main --commit-dirty=true
+
 # copy the built plugin into an Obsidian vault, e.g.
 # just plugin-install ~/winhome/Documents/scriptwizards
 plugin-install vault:
