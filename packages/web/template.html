@@ -16,8 +16,8 @@
     --panel-2: #1e1e1e;
     --border: #3d3d3d;
     --text: #ffffff;
-    --muted: #9a9a9a;
-    --faint: #757575;
+    --muted: #ffffff;
+    --faint: #b8b8b8;
     --accent: #ffa227;
     --accent-dim: #c67f1e;
     --accent-bright: #ffd49b;
@@ -47,7 +47,7 @@
   .subline { color: var(--muted); font-size: 12.5px; margin: 0 0 22px; max-width: 72ch; }
 
   .examples { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-  .examples span { font-family: var(--label); color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; align-self: center; }
+  .examples span { font-family: var(--label); color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; align-self: center; }
   .examples button {
     font: 500 12.5px var(--mono); color: var(--muted);
     background: var(--panel); border: 1px solid var(--border); border-radius: 2px;
@@ -63,7 +63,7 @@
   .pane-head {
     display: flex; justify-content: space-between; align-items: center; gap: 10px;
     padding: 8px 12px; border-bottom: 1px solid var(--border);
-    font-family: var(--label); color: var(--muted); font-size: 13px;
+    font-family: var(--label); color: var(--accent); font-size: 13px;
     text-transform: uppercase; letter-spacing: 0.1em;
   }
   .editor { position: relative; }
@@ -118,12 +118,20 @@
   .errors { color: var(--error); font-size: 12.5px; margin: 0 14px 12px; white-space: pre-wrap; }
 
   .history { border-top: 1px solid var(--border); margin: 0; padding: 8px 14px 12px; }
-  .history-title { font-family: var(--label); color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .history-title { font-family: var(--label); color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
   .history ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; }
   .history li { color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .history li::before { content: ">"; color: var(--accent-dim); margin-right: 8px; }
 
   footer { margin-top: 28px; color: var(--muted); font-size: 12.5px; max-width: 66ch; }
+  /* the zine's footer device, so the two sites sign off the same way */
+  .mark {
+    margin: 32px 0 0;
+    text-align: center;
+    font-family: var(--label);
+    font-size: 16px;
+    color: var(--faint);
+  }
   footer p { margin: 0 0 8px; }
   footer code { color: var(--accent); }
   .toast {
@@ -182,6 +190,8 @@
     <p>the same engine runs the CLI and the Obsidian plugin. everything here
     runs in your browser; nothing is uploaded anywhere.</p>
   </footer>
+
+  <p class="mark"><span>--[ </span><a href="https://scriptwizards.org/">scriptwizards.org</a><span> ]--</span></p>
 </div>
 <div class="toast" id="toast"></div>
 
