@@ -56,7 +56,7 @@
   .examples button:hover { color: var(--text); border-color: var(--muted); }
   .examples button.active { color: var(--accent); border-color: var(--accent-dim); }
 
-  .panes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+  .panes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: stretch; }
   @media (max-width: 820px) { .panes { grid-template-columns: 1fr; } }
 
   .pane { background: var(--panel); border: 1px solid var(--border); border-radius: 2px; }
@@ -106,6 +106,12 @@
     padding: 6px 8px;
   }
 
+  /* The roller pane matches the source pane's height and the result box
+     absorbs the slack, so a long roll scrolls inside its own box instead of
+     resizing the pane and shoving the hint, the errors and the history down
+     the page on every press. */
+  .pane.roller { display: flex; flex-direction: column; }
+  .pane.roller .result { flex: 1 1 auto; overflow-y: auto; }
   .result {
     margin: 0 14px 12px; padding: 14px; min-height: 112px;
     background: var(--panel-2); border: 1px solid var(--border); border-radius: 2px;
@@ -119,7 +125,7 @@
 
   .history { border-top: 1px solid var(--border); margin: 0; padding: 8px 14px 12px; }
   .history-title { font-family: var(--label); color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-  .history ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .history ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; max-height: 96px; overflow-y: auto; }
   .history li { color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .history li::before { content: ">"; color: var(--accent-dim); margin-right: 8px; }
 
@@ -164,7 +170,7 @@
       </div>
     </div>
 
-    <div class="pane">
+    <div class="pane roller">
       <div class="pane-head"><span>roller</span><span id="table-title"></span></div>
       <div class="toolbar">
         <button class="primary" id="roll">roll</button>
