@@ -1,0 +1,21 @@
+{
+  "name": "@scriptwizards/perhaps-cli",
+  "version": "0.1.0",
+  "description": "Roll random tables from plain markdown files",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "perhaps": "dist/main.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@scriptwizards/perhaps-engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "tsx": "^4.19.0"
+  }
+}
