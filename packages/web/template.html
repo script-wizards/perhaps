@@ -36,6 +36,21 @@
     line-height: 1.6;
     min-height: 100vh;
   }
+  /* Square, 8px, hard edges: one unifont character cell wide, so the bar sits
+     on the same grid as the type. Windows ships rounded scrollbars by default,
+     so the radius is zeroed on every part rather than just the thumb. */
+  * { scrollbar-color: var(--accent) var(--panel-2); }
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-corner { border-radius: 0; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; background: var(--panel-2); }
+  ::-webkit-scrollbar-track { background: var(--panel-2); border: 0; box-shadow: none; }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border: 0; box-shadow: none; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent-bright); }
+  ::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+  ::-webkit-scrollbar-corner { background: var(--panel-2); }
+
   a { color: var(--accent); text-decoration: none; }
   a:visited { color: var(--accent-dim); }
   a:hover { color: var(--accent-bright); }
