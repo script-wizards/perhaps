@@ -12,7 +12,8 @@ import type {
 
 const MAX_DEPTH = 10;
 const REROLL_ATTEMPTS = 5;
-const REF_PATTERN = /^([A-Za-z0-9_-]+)(?:\.(selectUnique|selectMany)\((\d+)\))?$/;
+const REF_PATTERN =
+  /^([A-Za-z0-9_-]+(?:\s+[A-Za-z0-9_-]+)*)(?:\.(selectUnique|selectMany)\((\d+)\))?$/;
 const DICE_PATTERN = /\b(\d+)[dD](\d+)([+-]\d+)?\b/g;
 const RANGE_PATTERN = /^(\d+)\s*-\s*(\d+)$/;
 const LIST_SEPARATOR = ", ";
