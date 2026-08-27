@@ -13,8 +13,9 @@ Successor to [Oracle](https://github.com/script-wizards/oracle).
 |---|---|
 | `packages/engine` | `@scriptwizards/perhaps-engine`: parser + roller, no dependencies, no platform APIs |
 | `packages/cli` | `perhaps <file.md> [table]`, `--list`, `--seed n` |
-| `packages/obsidian` | Obsidian plugin: palette roll, insert at cursor, live code block rollers |
 | `packages/web` | single-file demo page, deployed to [perhaps.sh](https://perhaps.sh) |
+
+The Obsidian plugin lives in its own repo, [perhaps-obsidian](https://github.com/script-wizards/perhaps-obsidian), and bundles the engine from here as a git dependency.
 
 ## Development
 

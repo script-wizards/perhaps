@@ -23,9 +23,3 @@ deploy:
     pnpm --filter @scriptwizards/perhaps-web build
     npx -y wrangler@latest pages deploy packages/web/dist --project-name perhaps --branch main --commit-dirty=true
 
-# copy the built plugin into an Obsidian vault, e.g.
-# just plugin-install ~/winhome/Documents/scriptwizards
-plugin-install vault:
-    pnpm --filter @scriptwizards/perhaps-obsidian build
-    mkdir -p "{{vault}}/.obsidian/plugins/perhaps"
-    cp packages/obsidian/main.js packages/obsidian/manifest.json packages/obsidian/styles.css "{{vault}}/.obsidian/plugins/perhaps/"
