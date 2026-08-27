@@ -139,6 +139,15 @@ describe("cross-table references", () => {
     const roller = new Roller([encounters, treasure], sequence(0));
     expect(roller.roll(encounters).text).toBe("wolves guarding a gem");
   });
+
+  it("accepts spaces in ref names, normalized to hyphens", () => {
+    const encounters = table("output\n  overheard: [tavern trouble]\n");
+    const tavern = table("title\n  Tavern Trouble\noutput\n  a brawl\n");
+    const roller = new Roller([encounters, tavern], sequence(0));
+    const result = roller.roll(encounters);
+    expect(result.text).toBe("overheard: a brawl");
+    expect(result.errors).toEqual([]);
+  });
 });
 
 describe("safety", () => {
