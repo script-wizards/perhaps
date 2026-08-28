@@ -50,6 +50,20 @@ encounter
     expect(result.errors[0]).toContain("unknown reference");
   });
 
+  it("reports refs to empty sections instead of crashing", () => {
+    const bare = table("output\n  value is [foo]\nfoo\nbar\n  something\n");
+    const result = new Roller([bare], sequence(0)).roll(bare);
+    expect(result.text).toBe("value is [foo]");
+    expect(result.errors).toEqual(['empty section "foo"']);
+  });
+
+  it("reports empty sections reached through select methods", () => {
+    const bare = table("output\n  [foo.selectMany(2)]\nfoo\nbar\n  something\n");
+    const result = new Roller([bare], sequence(0)).roll(bare);
+    expect(result.text).toBe("[foo.selectMany(2)]");
+    expect(result.errors).toEqual(['empty section "foo"']);
+  });
+
   it("reports unsupported expressions instead of swallowing them", () => {
     const fancy = table("output\n  [x = 5]\n");
     const result = new Roller([fancy], sequence(0)).roll(fancy);

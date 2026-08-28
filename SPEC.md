@@ -58,5 +58,8 @@ as errors rather than silently swallowed.
 - An in-place reroll retries up to 5 times to produce visibly different text,
   so clicking a part always feels like it did something; plain rolls stay
   unbiased. A node with only one possible outcome returns unchanged.
+- A ref to a section that does not exist or that has no entries renders as its
+  own literal text and reports an error. A section name declared with nothing
+  indented under it is legal and simply has no entries.
 - Recursion depth is capped at 10; cycles degrade to literal text with an
   error instead of hanging.
