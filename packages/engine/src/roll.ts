@@ -240,7 +240,6 @@ export class Roller {
       const node = this.rollSection(target.table, target.section, {
         ...ctx,
         table: target.table,
-        depth: ctx.depth + 1,
       });
       return { ...node, source, detail: { ...node.detail, ref: name } };
     }
