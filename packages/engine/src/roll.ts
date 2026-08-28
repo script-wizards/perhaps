@@ -231,6 +231,10 @@ export class Roller {
       ctx.errors.push(`unknown reference "[${name}]"`);
       return { kind: "text", text: source };
     }
+    if (target.section.entries.length === 0) {
+      ctx.errors.push(`empty section "${target.section.name}"`);
+      return { kind: "text", text: source };
+    }
 
     if (!method) {
       const node = this.rollSection(target.table, target.section, {
