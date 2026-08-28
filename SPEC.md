@@ -61,5 +61,6 @@ as errors rather than silently swallowed.
 - A ref to a section that does not exist or that has no entries renders as its
   own literal text and reports an error. A section name declared with nothing
   indented under it is legal and simply has no entries.
-- Recursion depth is capped at 10; cycles degrade to literal text with an
-  error instead of hanging.
+- Recursion depth is capped at 10 levels of nesting, counting one level per
+  ref hop or nested choice, so a chain of ten tables resolves. Going deeper,
+  including cycles, degrades to literal text with an error instead of hanging.

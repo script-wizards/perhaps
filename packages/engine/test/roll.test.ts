@@ -165,8 +165,29 @@ describe("cross-table references", () => {
 });
 
 describe("safety", () => {
+  function chain(links: number) {
+    const sections = ["output\n  [link1]"];
+    for (let i = 1; i <= links; i++) {
+      sections.push(`link${i}\n  ${i < links ? `[link${i + 1}]` : "the end"}`);
+    }
+    return table(sections.join("\n"));
+  }
+
   it("caps recursion on cycles instead of hanging", () => {
     const t = table("output\n  [loop]\nloop\n  again [loop]\n");
+    const result = new Roller([t], sequence(0)).roll(t);
+    expect(result.errors.some((e) => e.includes("recursion"))).toBe(true);
+  });
+
+  it("allows nesting up to the documented depth", () => {
+    const t = chain(9);
+    const result = new Roller([t], sequence(0)).roll(t);
+    expect(result.text).toBe("the end");
+    expect(result.errors).toEqual([]);
+  });
+
+  it("reports depth once nesting passes the cap", () => {
+    const t = chain(11);
     const result = new Roller([t], sequence(0)).roll(t);
     expect(result.errors.some((e) => e.includes("recursion"))).toBe(true);
   });
