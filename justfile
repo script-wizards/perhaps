@@ -8,7 +8,7 @@ build:
     pnpm -r build
 
 roll file table="":
-    pnpm --filter @scriptwizards/perhaps-cli exec tsx src/main.ts {{file}} {{table}}
+    pnpm --filter @scriptwizards/perhaps-cli exec tsx src/main.ts {{absolute_path(file)}} {{table}}
 
 # build the single-file web demo and serve it locally
 web:
