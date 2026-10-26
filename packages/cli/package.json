@@ -1,5 +1,5 @@
 {
-  "name": "@scriptwizards/perhaps-cli",
+  "name": "@scriptwizards/perhaps",
   "version": "0.1.0",
   "description": "Roll random tables from plain markdown files",
   "license": "Apache-2.0",
